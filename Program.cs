@@ -11,12 +11,12 @@ public class Program
     public static void Main(string[] args)
     {
 
-        var modelId = "gpt-4o-mini";
-        var endpoint = "-";
-        var apiKey = "-";
-
         var builder = WebApplication.CreateBuilder(args);
 
+
+        var modelId = "gpt-4o-mini";
+        var endpoint = builder.Configuration["Settings:AIEndpoint"]; ;
+        var apiKey = builder.Configuration["Settings:AIApiKey"];
 
         builder.Services.AddTransient((serviceProvider) => {
             KernelPluginCollection pluginCollection = [];
